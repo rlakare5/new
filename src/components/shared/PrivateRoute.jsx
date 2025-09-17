@@ -9,7 +9,13 @@ export default function PrivateRoute({ children, role }) {
   }
   
   if (role && user.role !== role) {
-    return <Navigate to={user.role === "student" ? "/student" : "/coordinator"} replace />;
+    const roleRoutes = {
+      student: "/student",
+      coordinator: "/coordinator", 
+      hod: "/hod",
+      admin: "/admin"
+    };
+    return <Navigate to={roleRoutes[user.role] || "/login"} replace />;
   }
   
   return children;

@@ -181,6 +181,8 @@ export default function CertificateUploadForm({ onUpload }) {
         file: URL.createObjectURL(file),
         points: calculatePoints(),
         verified: false,
+        submittedAt: new Date().toISOString(),
+        rejectionReason: null
       };
 
       onUpload(cert);
@@ -306,7 +308,7 @@ export default function CertificateUploadForm({ onUpload }) {
             <label style={labelStyle}>Organization Website</label>
             <input
               type="url"
-              placeholder="https://example.com"
+              placeholder="https://organization-website.com"
               value={orgLink}
               onChange={(e) => {
                 setOrgLink(e.target.value);

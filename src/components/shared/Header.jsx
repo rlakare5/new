@@ -39,7 +39,12 @@ export default function Header({ user, onLogout }) {
             <path d="M6 12h3"></path>
             <path d="M6 15h2"></path>
           </svg>
-          CertManage
+          <img 
+            src="/sanjivani_university_logo-removebg-preview.png" 
+            alt="Sanjivani University" 
+            style={{ height: "24px", marginRight: "8px" }}
+          />
+          MAP System
         </h2>
       </div>
       

@@ -50,18 +50,28 @@ export default function StudentDashboard() {
         
         <main className="main-content">
           <div className="content-header">
-            <h1 className="page-title">Student Dashboard</h1>
+            <h1 className="page-title">Student Dashboard - MAP System</h1>
+            <div style={{ fontSize: "14px", color: "#64748b" }}>
+              <p>{user.name} | {user.program} | {user.year} | Class: {user.class}</p>
+            </div>
           </div>
           
           <Routes>
             <Route path="/" element={
               <>
                 <ProgressBar points={totalPoints} />
+                <MAPBreakdown certificates={studentCertificates} />
                 <CertificateList certificates={studentCertificates} />
               </>
             } />
             <Route path="/upload" element={
               <CertificateUploadForm onUpload={handleUpload} />
+            } />
+            <Route path="/submissions" element={
+              <MySubmissions certificates={studentCertificates} />
+            } />
+            <Route path="/transcript" element={
+              <TranscriptView certificates={studentCertificates} user={user} />
             } />
           </Routes>
         </main>

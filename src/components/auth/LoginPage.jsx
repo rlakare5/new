@@ -21,14 +21,22 @@ export default function LoginPage() {
 
     // Simulate API call
     setTimeout(() => {
-      if (prn === "coord" && password === "coord") {
-        const user = { role: "coordinator", name: "Coordinator" };
-        localStorage.setItem("user", JSON.stringify(user));
-        navigate("/coordinator");
-      } else if (prn && password) {
-        const user = { role: "student", name: `Student ${prn}`, prn };
+      if (prn === "student123" && password === "student") {
+        const user = { role: "student", name: "John Doe", prn: "student123", program: "B.Tech CSE", year: "TY", class: "CSE-A" };
         localStorage.setItem("user", JSON.stringify(user));
         navigate("/student");
+      } else if (prn === "coord123" && password === "coord") {
+        const user = { role: "coordinator", name: "Dr. Smith", id: "coord123", department: "Computer Science", assignedClasses: ["CSE-A", "CSE-B"] };
+        localStorage.setItem("user", JSON.stringify(user));
+        navigate("/coordinator");
+      } else if (prn === "hod123" && password === "hod") {
+        const user = { role: "hod", name: "Dr. Johnson", id: "hod123", department: "Computer Science" };
+        localStorage.setItem("user", JSON.stringify(user));
+        navigate("/hod");
+      } else if (prn === "admin123" && password === "admin") {
+        const user = { role: "admin", name: "Admin User", id: "admin123" };
+        localStorage.setItem("user", JSON.stringify(user));
+        navigate("/admin");
       } else {
         setError("Invalid credentials");
       }
@@ -40,8 +48,15 @@ export default function LoginPage() {
     <div className="login-container">
       <div className="login-card">
         <div className="login-logo">
-          <h1>CertManage</h1>
-          <p>Certificate Management System</p>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "16px" }}>
+            <img 
+              src="/sanjivani_university_logo-removebg-preview.png" 
+              alt="Sanjivani University" 
+              style={{ height: "60px", marginRight: "12px" }}
+            />
+          </div>
+          <h1>MAP Management System</h1>
+          <p>Mandatory Activity Points - Sanjivani University</p>
         </div>
         
         <form onSubmit={handleLogin}>
@@ -114,8 +129,10 @@ export default function LoginPage() {
         <div style={{ marginTop: "24px", padding: "16px", backgroundColor: "#f0f9ff", borderRadius: "6px" }}>
           <h4 style={{ fontSize: "14px", fontWeight: "500", marginBottom: "8px", color: "#0369a1" }}>Demo Credentials</h4>
           <div style={{ fontSize: "13px", color: "#64748b" }}>
-            <p>Coordinator: PRN: <strong>coord</strong>, Password: <strong>coord</strong></p>
-            <p>Student: Any PRN and any password</p>
+            <p><strong>Student:</strong> PRN: <strong>student123</strong>, Password: <strong>student</strong></p>
+            <p><strong>Coordinator:</strong> ID: <strong>coord123</strong>, Password: <strong>coord</strong></p>
+            <p><strong>HoD:</strong> ID: <strong>hod123</strong>, Password: <strong>hod</strong></p>
+            <p><strong>Admin:</strong> ID: <strong>admin123</strong>, Password: <strong>admin</strong></p>
           </div>
         </div>
       </div>
